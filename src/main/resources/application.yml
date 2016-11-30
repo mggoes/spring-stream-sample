@@ -1,0 +1,47 @@
+# spring.cloud.stream.bindings.<channelName>.<property>;
+# Quando o Binder do RabbitMQ e utilizado, o Spring Cloud Stream cria um TopicExchange para cada destination especificada;
+# E possivel especificar varias destinations separando-as por virgula. Ex.: test.stream.local, test.stream.local2, test.stream.local3;
+# Caso a destination nao seja especificada, o nome do channel sera utilizado;
+#spring:
+#  jackson.serialization.WRITE_DATES_AS_TIMESTAMPS: false
+#  cloud:
+#    stream:
+#      default-binder: rabbit-cloud-bus
+#      bindings:
+#        requestChannel:
+#          destination: ha.requestExchange
+#          group: reqQueue
+#          binder: rabbit-local
+#          consumer:
+#            concurrency: 3
+#        responseChannel:
+#          destination: ha.responseExchange
+#          binder: rabbit-local
+#        errorChannel:
+#          destination: ha.DLX
+#          binder: rabbit-local
+#      binders:
+#        rabbit-local:
+#          type: rabbit
+#          environment:
+#            spring:
+#              rabbitmq:
+#                host: 192.168.99.100
+#                port: 5672
+#                username: guest
+#                password: guest
+#        rabbit-cloud-bus:
+#          type: rabbit
+#          environment:
+#            spring:
+#              rabbitmq:
+#                host: 192.168.99.100
+#                port: 32771
+#                username: guest
+#                password: guest
+#
+#retry-properties:
+#  max-attemps: 5
+#  initial-interval: 1000
+#  multiplier: 2.0
+#  max-interval: 60000

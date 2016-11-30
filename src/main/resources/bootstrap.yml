@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: spring-stream-sample
+  cloud:
+    config:
+      uri: http://localhost:8888
+      enabled: true
+
+eureka:
+  client:
+    registerWithEureka: false
+    fetch-registry: false
